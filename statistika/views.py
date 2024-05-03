@@ -1,11 +1,12 @@
 from rest_framework import generics, status
-from accounts.models import Tuman, Maktab, Mahalla
-from .serializers import MahallaSerializer, MaktabSerializer
+from accounts.models import Tuman, Maktab, Mahalla,Viloyat
+from accounts.serializers import MahallaSerializer, MaktabSerializer
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from adduser.models import Certificate
+from accounts.serializers import ViloyatSerializer
 from accounts.permissions import (
     IsAdmin,
     IsHokim,
@@ -195,7 +196,10 @@ class Tumannem(APIView):
 
 
 class ViloyatListCreateAPIView(generics.ListCreateAPIView):
-    permission_classes = [IsHokim, IsHokimYordamchisi, IsAdmin]
+    permission_classes = [
+        IsAuthenticated,
+        IsAdmin | IsHokim | IsHokimYordamchisi | IsTumanMasul | IsTumanYoshlarIshlari,
+    ]
     queryset = Viloyat.objects.all()
     serializer_class = ViloyatSerializer
 
