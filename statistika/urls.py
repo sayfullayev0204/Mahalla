@@ -15,7 +15,7 @@ from .views import (
 
 urlpatterns = [
     # tuman
-    # path('tuman_info', ViloyatListCreateAPIView.as_view(), name='tuman_info'),
+    path('tuman_info', ViloyatListCreateAPIView.as_view(), name='tuman_info'),
     path("tumandone_info/<int:tuman_id>/", Tumandone.as_view(), name="tumandone"),
     path("tumanen_info/<int:tuman_id>/", Tumanen.as_view(), name="tumanen"),
     path("tumannem_info/<int:tuman_id>/", Tumannem.as_view(), name="tumannem"),
