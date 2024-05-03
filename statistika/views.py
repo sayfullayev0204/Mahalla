@@ -194,10 +194,10 @@ class Tumannem(APIView):
         )
 
 
-# class ViloyatListCreateAPIView(generics.ListCreateAPIView):
-#     permission_classes = [IsHokim, IsHokimYordamchisi, IsAdmin]
-#     queryset = Viloyat.objects.all()
-#     serializer_class = ViloyatSerializer
+class ViloyatListCreateAPIView(generics.ListCreateAPIView):
+    permission_classes = [IsHokim, IsHokimYordamchisi, IsAdmin]
+    queryset = Viloyat.objects.all()
+    serializer_class = ViloyatSerializer
 
 
 # Mahalla
