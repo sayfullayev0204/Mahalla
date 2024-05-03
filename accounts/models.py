@@ -2,6 +2,52 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.exceptions import ValidationError
 
+class Viloyat(models.Model):
+    name = models.CharField(max_length=300)
+    overall = models.SmallIntegerField(default=0)
+    plan_en_b2 = models.SmallIntegerField(default=0)
+    plan_en_c1 = models.SmallIntegerField(default=0)
+    plan_en_c2 = models.SmallIntegerField(default=0)
+    plan_deorother_b2 = models.SmallIntegerField(default=0)
+    plan_deorother_c1 = models.SmallIntegerField(default=0)
+    plan_deorother_c2 = models.SmallIntegerField(default=0)
+
+    class Meta:
+        verbose_name = "Viloyat"
+        verbose_name_plural = "viloyat"
+        ordering = ["name"]
+        constraints = [
+            models.CheckConstraint(
+                check=models.Q(plan_en_b2__lte=models.F("overall"))
+                & models.Q(plan_en_c1__lte=models.F("overall"))
+                & models.Q(plan_en_c2__lte=models.F("overall"))
+                & models.Q(plan_deorother_b2__lte=models.F("overall"))
+                & models.Q(plan_deorother_c1__lte=models.F("overall"))
+                & models.Q(plan_deorother_c2__lte=models.F("overall")),
+                name="viloyat_plan_constraint",
+            )
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.name}"
+
+    def clean(self):
+        if (
+            self.plan_en_b2
+            + self.plan_en_c1
+            + self.plan_en_c2
+            + self.plan_deorother_b2
+            + self.plan_deorother_c1
+            + self.plan_deorother_c2
+            > self.overall
+        ):
+            raise ValidationError(
+                {"overall": "Sum of plans cannot exceed overall value"}
+            )
+
+    def save(self, *args, **kwargs):
+        self.clean()
+        super().save(*args, **kwargs)
 
 class Tuman(models.Model):
     name = models.CharField(max_length=300)
