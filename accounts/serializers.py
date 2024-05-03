@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Tuman, Mahalla, Maktab
+from .models import User, Tuman, Mahalla, Maktab,Viloyat
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -16,6 +16,11 @@ class UserSerializer(serializers.ModelSerializer):
         ]
         extra_kwargs = {"password": {"write_only": True}}
 
+class ViloyatSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Viloyat
+        fields = "__all__"
 
 class TumanSerializer(serializers.ModelSerializer):
     class Meta:
