@@ -16,12 +16,12 @@ class TumanSerializer(serializers.ModelSerializer):
         )
 
 
-# class ViloyatSerializer(serializers.ModelSerializer):
-#     statistics = TumanSerializer(many=True)
+class ViloyatSerializer(serializers.ModelSerializer):
+    statistics = TumanSerializer(many=True)
 
-#     class Meta:
-#         model = Viloyat
-#         fields = ("nomi", "all", "ec1", "eb2", "nc1", "nb2", "statistics")
+    class Meta:
+        model = Viloyat
+        fields = ("nomi", "all", "ec1", "eb2", "nc1", "nb2", "statistics")
 
 
 class MahallaSerializer(serializers.ModelSerializer):
