@@ -106,7 +106,7 @@ class Tumanen(APIView):
             overel="B2",
         )
         en_b2_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="english",
             overel="B2",
         )
@@ -116,7 +116,7 @@ class Tumanen(APIView):
             overel="C1",
         )
         en_c1_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="english",
             overel="C1",
         )
