@@ -32,32 +32,32 @@ class Tumandone(APIView):
         tuman = Tuman.objects.get(id=tuman_id)
         # tuman english uchun
         eng_start = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="english",
         ).count()
         eng_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="english",
         ).count()
         all_en = tuman.plan_en_b2 + tuman.plan_en_c1
         if all_en != 0:
-            enuqimoqda = (eng_start / all_en) * 100
-            entugatgan = (eng_end / all_en) * 100
+            enuqimoqda = round(((eng_start / all_en) * 100),1)
+            entugatgan = round(((eng_end / all_en) * 100),1)
         else:
             enuqimoqda = 0
 
         nem_start = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="nemesis",
         ).count()
         nem_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="nemesis",
         ).count()
         all_nem = (tuman.plan_deorother_c1 + tuman.plan_deorother_b2) / 100
         if all_nem != 0:
-            nemuqimoqda = (nem_start / all_nem) * 100
-            nemtugatgan = (nem_end / all_nem) * 100
+            nemuqimoqda = round(((nem_start / all_nem) * 100),1)
+            nemtugatgan = round(((nem_end / all_nem) * 100),1)
         else:
             nemuqimoqda = 0
         all_uqimoqda = nem_start + eng_start
@@ -89,19 +89,19 @@ class Tumanen(APIView):
         tuman = Tuman.objects.get(id=tuman_id)
         all_paln_en = tuman.plan_en_c1 + tuman.plan_en_b2
         all_en = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="english",
             overel="B2" and "C1",
         ).count()
-        percent = (all_en / all_paln_en) * 100
+        percent = round(((all_en / all_paln_en) * 100),1)
         en_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="english",
             overel="B2" and "C1",
         ).count()
-        en_percent = (en_end / (tuman.plan_en_c1 + tuman.plan_en_b2)) * 100
+        en_percent = round(((en_end / (tuman.plan_en_c1 + tuman.plan_en_b2)) * 100),1)
         en_b2_start = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="english",
             overel="B2",
         )
@@ -111,7 +111,7 @@ class Tumanen(APIView):
             overel="B2",
         )
         en_c1_start = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="english",
             overel="C1",
         )
@@ -147,34 +147,34 @@ class Tumannem(APIView):
         tuman = Tuman.objects.get(id=tuman_id)
         all_paln_en = tuman.plan_en_c1 + tuman.plan_en_b2
         all_en = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="nemesis",
             overel="B2" and "C1",
         ).count()
-        percent = (all_en / all_paln_en) * 100
+        percent = round(((all_en / all_paln_en) * 100),)
         en_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="nemesis",
             overel="B2" and "C1",
         ).count()
-        en_percent = (en_end / (tuman.plan_en_c1 + tuman.plan_en_b2)) * 100
+        en_percent = round(((en_end / (tuman.plan_en_c1 + tuman.plan_en_b2)) * 100),1)
         en_b2_start = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="nemesis",
             overel="B2",
         )
         en_b2_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="nemesis",
             overel="B2",
         )
         en_c1_start = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="nemesis",
             overel="C1",
         )
         en_c1_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="nemesis",
             overel="C1",
         )
@@ -223,32 +223,32 @@ class Mahalladone(APIView):
         tuman = Mahalla.objects.get(id=tuman_id)
         # tuman english uchun
         eng_start = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="english",
         ).count()
         eng_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="english",
         ).count()
         all_en = tuman.plan_en_b2 + tuman.plan_en_c1
         if all_en != 0:
-            enuqimoqda = (eng_start / all_en) * 100
-            entugatgan = (eng_end / all_en) * 100
+            enuqimoqda = round(((eng_start / all_en) * 100),1)
+            entugatgan = round(((eng_end / all_en) * 100),1)
         else:
             enuqimoqda = 0
 
         nem_start = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="nemesis",
         ).count()
         nem_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="nemesis",
         ).count()
         all_nem = (tuman.plan_deorother_c1 + tuman.plan_deorother_b2) / 100
         if all_nem != 0:
-            nemuqimoqda = (nem_start / all_nem) * 100
-            nemtugatgan = (nem_end / all_nem) * 100
+            nemuqimoqda = round(((nem_start / all_nem) * 100),1)
+            nemtugatgan = round(((nem_end / all_nem) * 100),1)
         else:
             nemuqimoqda = 0
         all_uqimoqda = nem_start + eng_start
@@ -286,34 +286,34 @@ class Mahallaen(APIView):
         tuman = Mahalla.objects.get(id=tuman_id)
         all_paln_en = tuman.plan_en_c1 + tuman.plan_en_b2
         all_en = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="english",
             overel="B2" and "C1",
         ).count()
-        percent = (all_en / all_paln_en) * 100
+        percent = round(((all_en / all_paln_en) * 100),1)
         en_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="english",
             overel="B2" and "C1",
         ).count()
-        en_percent = (en_end / (tuman.plan_en_c1 + tuman.plan_en_b2)) * 100
+        en_percent = round(((en_end / (tuman.plan_en_c1 + tuman.plan_en_b2)) * 100),1)
         en_b2_start = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="english",
             overel="B2",
         )
         en_b2_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="english",
             overel="B2",
         )
         en_c1_start = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="english",
             overel="C1",
         )
         en_c1_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="english",
             overel="C1",
         )
@@ -350,34 +350,34 @@ class Mahallanem(APIView):
         tuman = Mahalla.objects.get(id=tuman_id)
         all_paln_en = tuman.plan_en_c1 + tuman.plan_en_b2
         all_en = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="nemesis",
             overel="B2" and "C1",
         ).count()
-        percent = (all_en / all_paln_en) * 100
+        percent = round(((all_en / all_paln_en) * 100),1)
         en_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="nemesis",
             overel="B2" and "C1",
         ).count()
-        en_percent = (en_end / (tuman.plan_en_c1 + tuman.plan_en_b2)) * 100
+        en_percent = round(((en_end / (tuman.plan_en_c1 + tuman.plan_en_b2)) * 100),1)
         en_b2_start = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="nemesis",
             overel="B2",
         )
         en_b2_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="nemesis",
             overel="B2",
         )
         en_c1_start = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="nemesis",
             overel="C1",
         )
         en_c1_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="nemesis",
             overel="C1",
         )
@@ -435,32 +435,32 @@ class Maktabdone(APIView):
         tuman = Maktab.objects.get(id=tuman_id)
         # tuman english uchun
         eng_start = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="english",
         ).count()
         eng_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="english",
         ).count()
         all_en = tuman.plan_en_b2 + tuman.plan_en_c1
         if all_en != 0:
-            enuqimoqda = (eng_start / all_en) * 100
-            entugatgan = (eng_end / all_en) * 100
+            enuqimoqda = round(((eng_start / all_en) * 100),1)
+            entugatgan = round(((eng_end / all_en) * 100),1)
         else:
             enuqimoqda = 0
 
         nem_start = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="nemesis",
         ).count()
         nem_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="nemesis",
         ).count()
         all_nem = (tuman.plan_deorother_c1 + tuman.plan_deorother_b2) / 100
         if all_nem != 0:
-            nemuqimoqda = (nem_start / all_nem) * 100
-            nemtugatgan = (nem_end / all_nem) * 100
+            nemuqimoqda = round(((nem_start / all_nem) * 100),1)
+            nemtugatgan = round(((nem_end / all_nem) * 100),1)
         else:
             nemuqimoqda = 0
         all_uqimoqda = nem_start + eng_start
@@ -500,34 +500,34 @@ class Maktaben(APIView):
         tuman = Maktab.objects.get(id=tuman_id)
         all_paln_en = tuman.plan_en_c1 + tuman.plan_en_b2
         all_en = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="english",
             overel="B2" and "C1",
         ).count()
-        percent = (all_en / all_paln_en) * 100
+        percent = round(((all_en / all_paln_en) * 100),1)
         en_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="english",
             overel="B2" and "C1",
         ).count()
-        en_percent = (en_end / (tuman.plan_en_c1 + tuman.plan_en_b2)) * 100
+        en_percent = round(((en_end / (tuman.plan_en_c1 + tuman.plan_en_b2)) * 100),1)
         en_b2_start = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="english",
             overel="B2",
         )
         en_b2_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="english",
             overel="B2",
         )
         en_c1_start = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="english",
             overel="C1",
         )
         en_c1_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="english",
             overel="C1",
         )
@@ -566,34 +566,34 @@ class Maktabnem(APIView):
         tuman = Maktab.objects.get(id=tuman_id)
         all_paln_en = tuman.plan_en_c1 + tuman.plan_en_b2
         all_en = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="nemesis",
             overel="B2" and "C1",
         ).count()
-        percent = (all_en / all_paln_en) * 100
+        percent = round(((all_en / all_paln_en) * 100),1)
         en_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="nemesis",
             overel="B2" and "C1",
         ).count()
-        en_percent = (en_end / (tuman.plan_en_c1 + tuman.plan_en_b2)) * 100
+        en_percent = round(((en_end / (tuman.plan_en_c1 + tuman.plan_en_b2)) * 100),1)
         en_b2_start = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="nemesis",
             overel="B2",
         )
         en_b2_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="nemesis",
             overel="B2",
         )
         en_c1_start = Certificate.objects.filter(
-            status="uqimoqda",
+            # status="uqimoqda",
             title="nemesis",
             overel="C1",
         )
         en_c1_end = Certificate.objects.filter(
-            status="tugatgan",
+            # status="tugatgan",
             title="nemesis",
             overel="C1",
         )
